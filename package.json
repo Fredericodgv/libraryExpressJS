@@ -1,0 +1,24 @@
+{
+  "name": "libraryexpressjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fredericodgv/libraryExpressJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fredericodgv/libraryExpressJS/issues"
+  },
+  "homepage": "https://github.com/Fredericodgv/libraryExpressJS#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
