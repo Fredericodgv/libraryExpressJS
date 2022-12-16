@@ -15,17 +15,6 @@ app.get("/", (req, res) => {
     res.status(200).send("Curso de Node.js");
 });
 
-app.get("/books", (req, res) => {
-    books.find((err, books) => {
-        res.status(200).json(books);
-    })
-    
-});
-
-app.get("/books/:id", (req, res) => {
-    let index = searchBook(req.params.id);
-    res.json(books[index]);
-});
 
 app.post("/books", (req, res) => {
     books.push(req.body);
