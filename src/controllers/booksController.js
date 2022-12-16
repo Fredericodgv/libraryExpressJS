@@ -10,8 +10,13 @@ class BookController {
 
     static getBookById(req, res) {
         let { id } = req.params;
-        books.findById(id, (err, book) => {
-            res.status(200).json(book);
+        books.findById(id, (err, books) => {
+            if (err) {
+                res.status(400).send({ message: `${err.message} - livro não localizado` })
+            }
+            else{
+                res.status(200).send(books);
+            }
         })
     }
 
