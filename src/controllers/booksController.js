@@ -3,14 +3,19 @@ import books from "../models/Book.js";
 class BookController {
 
     static getAllBooks(req, res) {
-        books.find((err, books) => {
-            res.status(200).json(books);
+        books.find()
+            .populate('author')
+            .exec((err, books) => {
+                res.status(200).json(books);
         })
     }
 
     static getBookById(req, res) {
         let { id } = req.params;
-        books.findById(id, (err, books) => {
+
+        books.findById(id)
+            .populate('author', 'name') 
+            .exec((err, books) => {
             if (err) {
                 res.status(400).send({ message: `${err.message} - livro não localizado` })
             }
@@ -48,8 +53,13 @@ class BookController {
 
     static deleteBook(req, res) {
         let { id } = req.params;
-        books.deleteOne({ _id: id }, (err, book) => {
-            res.status(200).json(book);
+
+        books.findByIdAndDelete(id, (err) => {
+            if (!err) {
+                res.status(200).send({ message: "Livro excluído com sucesso!" });
+            } else {
+                res.status(500).send({ message: `${err.message} - falha ao excluir o livro` })
+            }
         })
     }
 

@@ -11,7 +11,4 @@ router
     .delete("/books/:id", BookController.deleteBook)
 
 
-
-
-
 export default router;
